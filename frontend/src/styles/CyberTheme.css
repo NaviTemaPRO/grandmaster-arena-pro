@@ -1,0 +1,149 @@
+/* frontend/src/styles/CyberTheme.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+/* frontend/src/styles/CyberTheme.css */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+/* Эта ошибка не влияет на работу приложения */
+/* --tw-gradient-from-position - это переменная Tailwind, она генерируется автоматически */
+:root {
+  /* Neon Colors */
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff00ff;
+  --neon-purple: #8b5cf6;
+  --neon-green: #39ff14;
+  --neon-yellow: #ffe600;
+  --neon-red: #ff0055;
+
+  /* Cyberpunk Gradients */
+  --cyber-gradient-1: linear-gradient(135deg, #0a0a0f 0%, #1a0b2e 100%);
+  --cyber-border: 1px solid rgba(0, 240, 255, 0.25);
+
+  /* Glow Effects */
+  --neon-glow: 0 0 15px rgba(0, 240, 255, 0.4), 0 0 30px rgba(0, 240, 255, 0.2);
+  --neon-glow-magenta: 0 0 15px rgba(255, 0, 255, 0.4), 0 0 30px rgba(255, 0, 255, 0.2);
+  --neon-glow-purple: 0 0 15px rgba(139, 92, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.2);
+}
+
+/* Сброс для предотвращения съезжания */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--cyber-gradient-1);
+  color: #e0e0e0;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  overflow-x: hidden;
+}
+
+/* Фоновые эффекты (исправлены позиции) */
+.cyber-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  z-index: 9999;
+}
+
+/* Neon Text (без лишних смещений) */
+.neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow: var(--neon-glow);
+}
+.neon-text-magenta {
+  color: var(--neon-magenta);
+  text-shadow: var(--neon-glow-magenta);
+}
+.neon-text-purple {
+  color: var(--neon-purple);
+  text-shadow: var(--neon-glow-purple);
+}
+
+/* Glassmorphism (без смещений) */
+.cyber-glass {
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--cyber-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cyber-glass:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--neon-glow), inset 0 0 30px rgba(0, 240, 255, 0.05);
+}
+
+/* Кнопки (без смещений) */
+.cyber-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 2px solid var(--neon-cyan);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: var(--neon-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-btn:hover {
+  color: #0a0a0f;
+  background: var(--neon-cyan);
+  box-shadow: var(--neon-glow);
+  transform: scale(1.02);
+}
+
+/* Карточки */
+.cyber-card {
+  background: rgba(10, 10, 15, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--neon-glow);
+  transform: translateY(-4px);
+}

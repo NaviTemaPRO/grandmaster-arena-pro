@@ -1,0 +1,190 @@
+﻿/* frontend/src/styles/globals.css */
+:root {
+  --bg-color: #050505;
+  --card-bg: rgba(20, 20, 25, 0.6);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent-cyan: #00f0ff;
+  --accent-purple: #8b5cf6;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --glass-blur: blur(24px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.1), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.08), transparent 40%);
+}
+
+#root { width: 100%; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Навигация */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 70px;
+  background: rgba(5, 5, 5, 0.8); backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-color); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 40px;
+}
+
+.logo {
+  font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em;
+  background: linear-gradient(to right, #fff, var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer;
+}
+
+.nav-links { display: flex; gap: 30px; }
+.nav-link {
+  color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+  transition: all 0.3s ease; position: relative;
+}
+.nav-link:hover, .nav-link.active { color: white; }
+.nav-link.active::after {
+  content: ''; position: absolute; bottom: -24px; left: 0; right: 0;
+  height: 2px; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Основной контент */
+.main-content {
+  margin-top: 70px; flex: 1; padding: 40px; max-width: 1200px;
+  margin-left: auto; margin-right: auto; width: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Стеклянная карточка */
+.glass-card {
+  background: var(--card-bg); backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-color); border-radius: 24px;
+  padding: 2.5rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+h1 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; line-height: 1.6; }
+
+/* Кнопки режимов игры */
+.mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.mode-btn {
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+  border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;
+  text-align: left; display: flex; align-items: center; gap: 1.2rem; width: 100%; color: white;
+}
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+.mode-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  background: rgba(0, 240, 255, 0.1); color: var(--accent-cyan); flex-shrink: 0;
+}
+.mode-info h3 { font-size: 1.1rem; margin-bottom: 0.3rem; color: white; }
+.mode-info p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Формы */
+.auth-form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
+.input-group input {
+  width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color);
+  border-radius: 12px; padding: 1rem; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.3s;
+}
+.input-group input:focus { border-color: var(--accent-cyan); }
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  border: none; border-radius: 12px; padding: 1rem; color: #000;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: opacity 0.3s; margin-top: 0.5rem;
+}
+.primary-btn:hover { opacity: 0.9; }
+
+.secondary-btn {
+  background: transparent; border: 1px solid var(--border-color); border-radius: 12px;
+  padding: 1rem; color: white; font-weight: 500; cursor: pointer; transition: background 0.3s; width: fit-content;
+}
+.secondary-btn:hover { background: rgba(255, 255, 255, 0.05); }
+
+.divider {
+  display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;
+  color: var(--text-muted); font-size: 0.8rem;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: var(--glass-blur); /* Используем твою переменную */
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(to right, #fff, var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: white;
+}
+
+/* Подсветка активной страницы в меню */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Отступ для контента, чтобы он не залезал под меню */
+.main-content {
+  margin-top: 70px;
+  flex: 1;
+  padding: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
